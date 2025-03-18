@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  kaggle_env:
+    build: .
+    container_name: kaggle_container
+    volumes:
+      - ./work:/app/work
+    ports:
+      - "8888:8888"
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+    command: ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--NotebookApp.token=''"]
